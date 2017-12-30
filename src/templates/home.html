@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container page-form">
+
+    <form id="home-form" action="/result" method="post">
+        <h1>Is my Food Safe?</h1>
+        <div class="form-group">
+            <label for="name">Business Name:</label>
+            <input type="text" id="name" class="form-control" name="name">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-info">Submit</button>
+        </div>
+        <div>
+            This program uses the King County Health API and pulls violations from the past 365 days.
+            <p>
+            <p>Only violations marked "red" are pulled in this report.
+            <p>
+            <p>Raw Data:
+            <a href=https://data.kingcounty.gov/resource/gkhn-e8mn.json?$where=inspection_date%3E%222017-01-04%22&violation_type=red&$order=inspection_date,%20address%20DESC>data.kingcounty.gov</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

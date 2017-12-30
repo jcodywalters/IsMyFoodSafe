@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>Results for '{{ name }}'</h1>
+
+    <table class="table table-striped">
+      <thead>
+        <tr class="table-info">
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Inspection Date</th>
+          <th scope="col">Violation</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for report in reports %}
+        <tr>
+          <td>{{ report['name'] }}</td>
+          <td>{{ report['address'] }}</td>
+          <td>{{ report['inspection_date'] }}</td>
+          <td>@{{ report['violation_description'] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+</div>
+{% endblock %}
