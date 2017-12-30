@@ -35,6 +35,8 @@ def home_method():
 def reports_method():
 	name = request.form['name']
 	reports = get_reports(HOST, QUERY, name)
+	if (name == ''):
+		return render_template('result.html', reports="No Reports Found")
 	if (len(reports) > 0):
 		return render_template('result.html', reports=reports, name=name)
 
