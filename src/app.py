@@ -23,7 +23,7 @@ HOST = 'data.kingcounty.gov'
 PREVDAYS = 360
 USER_ZIP = get_user_zip()
 DATERANGE = str(datetime.date.today() - datetime.timedelta(days=PREVDAYS))
-QUERY = f'$select=name,address,inspection_date,violation_description&$where=inspection_date>"{DATERANGE}"&violation_type=red$zip_code="{USER_ZIP}"&$order=inspection_date,address DESC'
+QUERY = f'$select=name,address,inspection_date,violation_description&$where=inspection_date>"{DATERANGE}"&violation_type=red&zip_code={USER_ZIP}&$order=inspection_date,address DESC'
 
 app = Flask(__name__)
 app.secrete_key = ""
@@ -39,12 +39,12 @@ def reports_method():
 	name = request.form['name']
 	reports = get_reports(HOST, QUERY, name)
 	if (name == ''):
-		return render_template('result.html', table_header="No Reports Found")
+		return render_template('result.html', table_header="No Reports Found", location = USER_ZIP)
 	if (len(reports) > 0):
 		name = "Reports for " + "'" + name + "'"
-		return render_template('result.html', reports=reports, table_header=name)
+		return render_template('result.html', reports=reports, table_header=name, location = USER_ZIP)
 
-	return render_template('result.html', table_header="No Reports Found")
+	return render_template('result.html', table_header="No Reports Found", location = USER_ZIP)
 
 
 
