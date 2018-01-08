@@ -10,6 +10,7 @@
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-info">Submit</button>
+            <button type="button" onclick="getLocation()" class="btn btn-success">Use My Location</button>
         </div>
         <div>
             This program uses the King County Health API and pulls violations from the past 365 days.
@@ -20,5 +21,26 @@
             <a href=https://data.kingcounty.gov/resource/gkhn-e8mn.json?$where=inspection_date%3E%222017-01-04%22&violation_type=red&$order=inspection_date,%20address%20DESC>data.kingcounty.gov</a>
         </div>
     </form>
+
+    <p>Click the button to get your coordinates.</p>
+
+    <p id="demo"></p>
+
+    <script>
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude + "<br>Zip: ";
+        }
+    </script>
 </div>
 {% endblock %}
