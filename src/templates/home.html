@@ -24,10 +24,10 @@
 
     <p>Click the button to get your coordinates.</p>
 
-    <p id="demo"></p>
+    <p id="position"></p>
 
     <script>
-        var x = document.getElementById("demo");
+        var x = document.getElementById("position");
 
         function getLocation() {
             if (navigator.geolocation) {
@@ -39,7 +39,7 @@
 
         function showPosition(position) {
             x.innerHTML = "Latitude: " + position.coords.latitude +
-            "<br>Longitude: " + position.coords.longitude + "<br>Zip: ";
+            "<br>Longitude: " + position.coords.longitude;
         }
     </script>
 </div>
