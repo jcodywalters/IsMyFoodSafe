@@ -37,7 +37,10 @@ LAT_UPPER = USER_LOCATION['lat'] + BOUND_RANGE
 LON_LOWER = USER_LOCATION['lon'] - BOUND_RANGE
 LON_UPPER = USER_LOCATION['lon'] + BOUND_RANGE
 
-QUERY = f'$select=name,address,inspection_date,violation_description&violation_type=red&$where=inspection_date>"{DATERANGE}" AND latitude>{LAT_LOWER} AND latitude<{LAT_UPPER} AND longitude>{LON_LOWER} AND longitude<{LON_UPPER}&$order=inspection_date,address DESC'
+# Query issue when pushed to Heroku. Using different query to return answer for now
+# QUERY = f'$select=name,address,inspection_date,violation_description&violation_type=red&$where=inspection_date>"{DATERANGE}" AND latitude>{LAT_LOWER} AND latitude<{LAT_UPPER} AND longitude>{LON_LOWER} AND longitude<{LON_UPPER}&$order=inspection_date,address DESC'
+QUERY = f'$select=name,address,inspection_date,violation_description&violation_type=red&$where=inspection_date>"{DATERANGE}"&$order=inspection_date,address DESC'
+
 
 app = Flask(__name__)
 app.secrete_key = ""
