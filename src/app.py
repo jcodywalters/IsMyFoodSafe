@@ -54,11 +54,11 @@ def reports_method():
     reports = get_reports(HOST, QUERY, businessName)
     if (businessName == ''):
         return render_template('result.html', table_header="No Reports Found")
-    if (len(reports) > 0):
-        name = "Reports for " + "'" + businessName + "'"
-        return render_template('result.html', reports=reports, table_header=businessName)
+    # if (len(reports) > 0):
+    name = "Reports for " + "'" + businessName + "'"
+    return render_template('result.html', reports=reports, table_header=businessName)
 
-    return render_template('result.html', table_header="No Reports Found")
+    # return render_template('result.html', table_header="No Reports Found")
 
 
 if __name__ == '__main__':
