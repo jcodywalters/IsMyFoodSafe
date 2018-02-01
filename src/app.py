@@ -29,7 +29,7 @@ def getUserLocation():
 
 HOST = 'data.kingcounty.gov'
 PREVDAYS = 360
-BOUND_RANGE = .050
+BOUND_RANGE = .10
 DATERANGE = str(datetime.date.today() - datetime.timedelta(days=PREVDAYS))
 USER_LOCATION = getUserLocation()
 LAT_LOWER = USER_LOCATION['lat'] - BOUND_RANGE
