@@ -22,8 +22,8 @@ def getUserLocation():
     j = json.loads(r.text)
     lat = j['latitude']
     lon = j['longitude']
-    # location = {'lat': lat, 'lon': lon}
-    location = {'lat': 47.4242534, 'lon': -122.1762584}
+    location = {'lat': lat, 'lon': lon}
+    # location = {'lat': 47.4242534, 'lon': -122.1762584}  // Used for debugging
     print("User Location: ", lat, lon)
     return location
 
